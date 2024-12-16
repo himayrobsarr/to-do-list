@@ -112,12 +112,12 @@ def main():
                 if not tarea.completada:
                     if st.button("Completar", key=f"comp_{tarea.id}"):
                         marcar_completada(tarea.id)
-                        st.experimental_rerun()
+                        st.rerun()
             
             with col3:
                 if st.button("Eliminar", key=f"del_{tarea.id}"):
                     eliminar_tarea(tarea.id)
-                    st.experimental_rerun()
+                    st.rerun()
             
             st.markdown("---")
     
@@ -148,11 +148,13 @@ def main():
                         completada=tarea_data["completada"]
                     )
                     session.add(nueva_tarea)
-                session.commit()
+                session.commit() 
                 session.close()
                 st.success("Tareas importadas exitosamente")
             except Exception as e:
                 st.error(f"Error al importar tareas: {str(e)}")
 
 if __name__ == "__main__":
-    main()
+    main()  
+
+
